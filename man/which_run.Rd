@@ -29,7 +29,8 @@ otherwise if \code{length(lag) == length(x)} different window size for each
 element. Negative value shifts window forward.}
 
 \item{idx}{an optional integer vector containing
-sorted (ascending) index of observation. If specified then \code{k} and \code{lag} are depending on \code{idx}.
+sorted (ascending) index of observation. If specified then \code{k} and
+\code{lag} are depending on \code{idx}.
 Length of \code{idx} should be equal of length \code{x}.}
 
 \item{at}{(`integer`, `Date`, `POSIXt`) vector of any size and any value

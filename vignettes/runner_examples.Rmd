@@ -70,34 +70,3 @@ df %>%
     v_minus7  = sum_run(value, 7, idx = date),
     v_minus14 = sum_run(value, 14, idx = date))
 ```
-
-
-### Unique for specified time frame
-
-[SO discussion](https://stackoverflow.com/questions/41693081/)
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-library(runner)
-df <- read.table(text = "  user_id       date category
-       27 2016-01-01    apple
-       27 2016-01-03    apple
-       27 2016-01-05     pear
-       27 2016-01-07     plum
-       27 2016-01-10    apple
-       27 2016-01-14     pear
-       27 2016-01-16     plum
-       11 2016-01-01    apple
-       11 2016-01-03     pear
-       11 2016-01-05     pear
-       11 2016-01-07     pear
-       11 2016-01-10    apple
-       11 2016-01-14    apple
-       11 2016-01-16    apple", header = TRUE)
-
-df %>%
-  group_by(user_id) %>%
-  mutate(
-    distinct_7  = runner(category, k =  7, idx = date, f = function(x) length(unique(x))),
-    distinct_14 = runner(category, k = 14, idx = date, f = function(x) length(unique(x)))
-  )
-```

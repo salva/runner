@@ -6,7 +6,6 @@ using namespace Rcpp;
 //' Lag dependent on variable
 //'
 //' Vector of input lagged along integer vector
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @param nearest \code{logical} single value. Applied when \code{idx} is used,
 //' then \code{nearest = FALSE} returns observation lagged exactly by the

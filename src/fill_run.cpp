@@ -5,7 +5,7 @@ using namespace Rcpp;
 //' Fill NA with previous non-NA element
 //'
 //' Fill \code{NA} with last non-NA element.
-//' @inheritParams runner
+//' @inheritParams sum_run
 //' @param run_for_first If first elements are filled with \code{NA}, \code{run_for_first = TRUE}
 //' allows to fill all initial \code{NA} with nearest non-NA value. By default
 //' \code{run_for_first = TRUE}

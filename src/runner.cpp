@@ -524,8 +524,11 @@ runner_vec(Rcpp::Vector<ITYPE> const& x,
 //'
 //' @param x \code{numeric} vector which running function is calculated on
 //'
+//' @param at (`integer`, `Date`, `POSIXt`) vector of any size and any value
+//'  defining output data points. Values of the vector defines the indexes which
+//'  data is computed at.
 //' @param na_rm \code{logical} single value (default \code{na_rm = TRUE}) -
-//' if \code{TRUE} sum is calculating excluding \code{NA}.
+//'  if \code{TRUE} sum is calculating excluding \code{NA}.
 //'
 //' @inheritParams runner
 //'
@@ -566,7 +569,6 @@ Rcpp::NumericVector sum_run(
 //'
 //' Running mean in specified window of numeric vector.
 //' @inheritParams sum_run
-//' @inheritParams runner
 //' @return mean {numeric} vector of length equals length of \code{x}.
 //' @examples
 //' set.seed(11)
@@ -604,7 +606,6 @@ NumericVector mean_run(
 //'
 //' \code{min_run} calculates running max on given \code{x} numeric vector,
 //' specified \code{k} window size.
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @return max {numeric} vector of length equals length of \code{x}.
 //' @examples
@@ -642,7 +643,6 @@ NumericVector max_run(
 //'
 //'
 //' \code{min_run} calculates running min on given \code{x} numeric vector, specified \code{k} window size.
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @return min {numeric} vector of length equals length of \code{x}.
 //' @examples
@@ -680,7 +680,6 @@ NumericVector min_run(
 //'
 //' Calculates running series of consecutive elements
 //' @param x {any type} vector which running function is calculated on
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @return streak [numeric] vector of length equals length of \code{x} containing
 //' number of consecutive occurrences.
@@ -745,7 +744,6 @@ IntegerVector streak_run(
 //'
 //'
 //' \code{min_run} calculates running which - returns index of element where \code{x == TRUE}.
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @param which \code{character} value "first" or "last" denoting if the first or last \code{TRUE}
 //' index is returned from the window.
@@ -1103,7 +1101,7 @@ Rcpp::List
 //'
 //' Creates \code{list} of windows with given arguments settings.
 //' Length of output \code{list} is equal
-//' @inheritParams runner
+//' @inheritParams sum_run
 //' @return list of vectors (windows). Length of list is the same as
 //' \code{length(x)} or \code{length(at)} if specified, and length of each
 //'  window is defined by \code{k} (unless window is out of range).

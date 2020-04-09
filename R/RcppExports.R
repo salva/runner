@@ -4,7 +4,7 @@
 #' Fill NA with previous non-NA element
 #'
 #' Fill \code{NA} with last non-NA element.
-#' @inheritParams runner
+#' @inheritParams sum_run
 #' @param run_for_first If first elements are filled with \code{NA}, \code{run_for_first = TRUE}
 #' allows to fill all initial \code{NA} with nearest non-NA value. By default
 #' \code{run_for_first = TRUE}
@@ -25,7 +25,6 @@ fill_run <- function(x, run_for_first = FALSE, only_within = FALSE) {
 #' Lag dependent on variable
 #'
 #' Vector of input lagged along integer vector
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @param nearest \code{logical} single value. Applied when \code{idx} is used,
 #' then \code{nearest = FALSE} returns observation lagged exactly by the
@@ -45,7 +44,6 @@ lag_run <- function(x, lag = 1L, idx = integer(0), nearest = FALSE) {
 #' Number of elements in k-long window calculated on \code{idx} vector.
 #' If \code{idx} is an `as.integer(date)` vector, then k=number of days in window -
 #' then the result is number of observations within k days window.
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @examples
 #' length_run(k = 3, idx = c(1, 2, 2, 4, 5, 5, 5, 5, 5, 5))
@@ -59,7 +57,6 @@ length_run <- function(k = integer(1), lag = integer(1), idx = integer(0)) {
 #'
 #' \code{min_run} calculates running minimum-maximum on given \code{x} numeric
 #'  vector, specified \code{k} window size.
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @param metric \code{character} what to return, minimum or maximum
 #' @return list.
@@ -75,8 +72,11 @@ minmax_run <- function(x, metric = "min", na_rm = TRUE) {
 #'
 #' @param x \code{numeric} vector which running function is calculated on
 #'
+#' @param at (`integer`, `Date`, `POSIXt`) vector of any size and any value
+#'  defining output data points. Values of the vector defines the indexes which
+#'  data is computed at.
 #' @param na_rm \code{logical} single value (default \code{na_rm = TRUE}) -
-#' if \code{TRUE} sum is calculating excluding \code{NA}.
+#'  if \code{TRUE} sum is calculating excluding \code{NA}.
 #'
 #' @inheritParams runner
 #'
@@ -99,7 +99,6 @@ sum_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at = 
 #'
 #' Running mean in specified window of numeric vector.
 #' @inheritParams sum_run
-#' @inheritParams runner
 #' @return mean {numeric} vector of length equals length of \code{x}.
 #' @examples
 #' set.seed(11)
@@ -120,7 +119,6 @@ mean_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at =
 #'
 #' \code{min_run} calculates running max on given \code{x} numeric vector,
 #' specified \code{k} window size.
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @return max {numeric} vector of length equals length of \code{x}.
 #' @examples
@@ -141,7 +139,6 @@ max_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at = 
 #'
 #'
 #' \code{min_run} calculates running min on given \code{x} numeric vector, specified \code{k} window size.
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @return min {numeric} vector of length equals length of \code{x}.
 #' @examples
@@ -162,7 +159,6 @@ min_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at = 
 #'
 #' Calculates running series of consecutive elements
 #' @param x {any type} vector which running function is calculated on
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @return streak [numeric] vector of length equals length of \code{x} containing
 #' number of consecutive occurrences.
@@ -184,7 +180,6 @@ streak_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at
 #'
 #'
 #' \code{min_run} calculates running which - returns index of element where \code{x == TRUE}.
-#' @inheritParams runner
 #' @inheritParams sum_run
 #' @param which \code{character} value "first" or "last" denoting if the first or last \code{TRUE}
 #' index is returned from the window.
@@ -207,7 +202,7 @@ which_run <- function(x, k = integer(0), lag = integer(1), idx = integer(0), at 
 #'
 #' Creates \code{list} of windows with given arguments settings.
 #' Length of output \code{list} is equal
-#' @inheritParams runner
+#' @inheritParams sum_run
 #' @return list of vectors (windows). Length of list is the same as
 #' \code{length(x)} or \code{length(at)} if specified, and length of each
 #'  window is defined by \code{k} (unless window is out of range).

@@ -62,7 +62,7 @@ Following diagram illustrates what running windows are - in this case
 running windows of length `k = 4`. For each of 15 elements of a vector
 each window contains current 4 elements.
 
-![](man/figures/running_windows_explain.png)
+![](man/figures/incremental_index.png)
 
 ### Window size
 

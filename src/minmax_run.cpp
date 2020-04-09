@@ -5,7 +5,6 @@
 //'
 //' \code{min_run} calculates running minimum-maximum on given \code{x} numeric
 //'  vector, specified \code{k} window size.
-//' @inheritParams runner
 //' @inheritParams sum_run
 //' @param metric \code{character} what to return, minimum or maximum
 //' @return list.
